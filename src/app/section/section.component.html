@@ -1,0 +1,15 @@
+<!-- <ng-container *ngFor="let skill of skills">
+    <p>{{skill.label}}</p>
+</ng-container> -->
+<div class="wrapper">
+    <div class="attr-section" *ngFor="let attribute of attributes">
+        <div class="attr" *ngFor="let attr of attribute">
+            <strong>{{attr.label}}</strong>
+            <div>
+                <app-star-rating></app-star-rating>
+            </div>
+            <!-- <div *ngFor="let val of attr.val">
+            </div> -->
+        </div>
+    </div>
+</div>
