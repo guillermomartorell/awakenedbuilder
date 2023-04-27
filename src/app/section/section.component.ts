@@ -1,18 +1,26 @@
-import { Component, Input, } from '@angular/core';
-
-interface Attribute {
-  label: string;
-  value: number;
-  type: string;
-}
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-section',
-  templateUrl: './section.component.html',
+  template: `<div class="wrapper">
+    <div class="attr-section" *ngFor="let attributeGroup of data">
+      <h4>
+        {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
+      </h4>
+      <div class="attr" *ngFor="let attribute of attributeGroup">
+        <strong>{{ attribute.label }}</strong>
+        <div>
+          <app-star-rating
+            (rated)="handleRated($event, attribute.type, attribute.label)"
+          ></app-star-rating>
+        </div>
+      </div>
+    </div>
+  </div>`,
   styleUrls: ['./section.component.css'],
 })
-export class SectionComponent  {
 
+export class SectionComponent {
   @Input() data: any[] = [];
   @Input() type: any;
 
