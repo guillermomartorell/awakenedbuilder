@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/awakened-builder",
     "ignore": [
       "firebase.json",
       "**/.*",

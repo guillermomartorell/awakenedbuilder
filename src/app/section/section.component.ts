@@ -22,7 +22,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
       </div>
     </div>
   `,
-  styleUrls: ['./section.component.css'],
+  styleUrls: ['./section.component.scss'],
 })
 export class SectionComponent implements OnInit {
   @Input() data: any[][] = [];
