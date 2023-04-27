@@ -1,42 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, } from '@angular/core';
+
+interface Attribute {
+  label: string;
+  value: number;
+  type: string;
+}
 
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.css'],
 })
-export class SectionComponent implements OnInit {
-  ngOnInit(): void {
-    this.attrSum = {
-      [this.data[0][0].type]: 0,
-      [this.data[1][0].type]: 0,
-      [this.data[2][0].type]: 0,
-    };
-  }
-  @Input() data: any = [];
-  selectedValue: any;
-  attrSum: any;
-  attrObj: any = [];
+export class SectionComponent  {
 
-  handleRated(value: number, type: any, label: any) {
-    const insert = {
-      label: label,
-      value: value,
-      type: type,
-    };
-    if (this.attrObj.length === 0) {
+  @Input() data: any[] = [];
+  @Input() type: any;
+
+  attrSum: Record<string, number> = {};
+  attrObj: any[] = [];
+
+  handleRated(value: number, type: string, label: string) {
+    const insert: any = { label, value, type };
+    const index = this.attrObj.findIndex((el) => el.label === label);
+    if (index === -1) {
       this.attrObj.push(insert);
-      this.attrSum[type] += value;
-      return;
+    } else {
+      this.attrObj[index] = insert;
     }
-    const selectedAttr = this.attrObj.filter((el: any) => el.label === label);
-    if (selectedAttr.length === 0) {
-      this.attrObj.push(insert);
-      return;
-    }
-    selectedAttr.forEach((el: any) => {
-      this.attrSum[el.type] = el.value;
-    });
 
     this.attrSum = this.attrObj.reduce((totals: any, item: any) => {
       const { type, value } = item;
