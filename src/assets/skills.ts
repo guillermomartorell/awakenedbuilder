@@ -211,7 +211,7 @@ export const skills = [
     },
     {
       label: "Awareness",
-      type: "awa",
+      type: "Knowledges",
       val: [
         "• You have a history of knowing when something is out of place.",
         "•• You can spot erratic or pattern behavior in an individual.",
@@ -222,7 +222,7 @@ export const skills = [
     },
     {
       label: "Finance",
-      type: "fin",
+      type: "Knowledges",
       val: [
         "• You can run a business and keep books.",
         "•• You can manage a corporate division or bank branch; you file impeccably plausible tax returns.",
@@ -233,7 +233,7 @@ export const skills = [
     },
     {
       label: "Investigation",
-      type: "inv",
+      type: "Knowledges",
       val: [
         "• You love a good mystery novel and fancy yourself an amateur sleuth.",
         "•• You have a firm knowledge of criminology and the signature acts of local rogues.",
@@ -244,7 +244,7 @@ export const skills = [
     },
     {
       label: "Medicine",
-      type: "med",
+      type: "Knowledges",
       val: [
         "• You know basic anatomy and the difference in blood flow from a vein and an artery. You can perform CPR and other first aid. You may have been a medical student in life.",
         "•• You can comfortably treat minor traumas and illnesses and narrow down a diagnosis. You may have been a nurse or EMT in life.",
@@ -255,7 +255,7 @@ export const skills = [
     },
     {
       label: "Occult",
-      type: "occ",
+      type: "Knowledges",
       val: [
         "• You know the legends of Caine and the Antediluvians, and you may have read the Book of Nod.",
         "•• You can sift the truth from pop occult nonsense.",
@@ -266,7 +266,7 @@ export const skills = [
     },
     {
       label: "Politics",
-      type: "pol",
+      type: "Knowledges",
       val: [
         "• You follow mortal political affairs in your regnum, and you know at least what the elders reveal about Kindred politics.",
         "•• You can apply influence at a local level, or you know who can.",
@@ -277,7 +277,7 @@ export const skills = [
     },
     {
       label: "Science",
-      type: "sci",
+      type: "Knowledges",
       val: [
         "• You dabble in the sciences and understand the principles behind the building blocks of life.",
         "•• You can accurately explain the competing scientific theories of the Embrace to another vampire.",
@@ -288,7 +288,7 @@ export const skills = [
     },
     {
       label: "Technology",
-      type: "tec",
+      type: "Knowledges",
       val: [
         "•  You know how to upgrade a home PC and keep it protected from viruses.",
         "•• You can conceal your IP, operate drones, and fake a digital photograph.",
