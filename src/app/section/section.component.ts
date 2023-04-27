@@ -1,20 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-interface Attribute {
-  label: string;
-  value: number;
-  type: string;
-}
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-section',
   template: `
     <div class="wrapper">
-      <h4>{{ description }}</h4>
-    </div>
-    <div class="wrapper">
       <div class="attr-section" *ngFor="let attributeGroup of data">
-        <h4>{{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}</h4>
+        <h4>
+          {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
+        </h4>
         <div class="attr" *ngFor="let attribute of attributeGroup">
           <strong>{{ attribute.label }}</strong>
           <div>
@@ -35,10 +30,16 @@ export class SectionComponent implements OnInit {
   attrSum: Record<string, number> = {};
   attrObj: any[] = [];
   description: string = 'Description: []';
+  config: any = new MatSnackBarConfig();
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     for (const attributeGroup of this.data) {
       this.attrSum[attributeGroup[0].type] = 0;
+    }
+    this.config = {
+      panelClass: 'manzanamanzanamanzana',
+      duration: 0
     }
   }
 
@@ -70,5 +71,7 @@ export class SectionComponent implements OnInit {
         }
       });
     });
+
+    this._snackBar.open(this.description, 'Dismiss', this.config);
   }
 }
