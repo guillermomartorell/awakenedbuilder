@@ -1,8 +1,13 @@
-<span class="star" 
-    *ngFor="let star of stars" 
-    [class.filled]="star.filled" 
-    (mouseover)="fillStar(star)"
-    (mouseout)="emptyStar(star)" 
-    (click)="toggleStar(star)">
-    <i class="fa fa-star">o</i>
-</span>
+<div
+  class="star-rating-container star-rating-animation"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+>
+  <div
+    *ngFor="let star of stars"
+    [ngClass]="[star.class]"
+    (click)="selectStar(star.id)"
+  >
+    <fa-icon [icon]="star.icon"></fa-icon>
+  </div>
+</div>

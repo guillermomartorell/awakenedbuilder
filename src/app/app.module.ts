@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SectionComponent } from './section/section.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 
 @NgModule({
   declarations: [
@@ -12,9 +14,11 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     StarRatingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

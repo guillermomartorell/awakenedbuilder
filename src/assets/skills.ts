@@ -1,17 +1,8 @@
-/* export const skills = [
-    {
-      label: "Athletics",
-      type: "ath",
-      val: [
-        "•",
-        "••",
-      ],
-    },
-] */
+
 export const skills = [
-    {
+    [{
       label: "Athletics",
-      type: "ath",
+      type: "Talents",
       val: [
         "• You were always attentive in gym class and you still have a spring in your step.",
         "•• Despite being dead, you are still as fit as a mortal doing regular exercise.",
@@ -22,7 +13,7 @@ export const skills = [
     },
     {
       label: "Brawl",
-      type: "bra",
+      type: "Talents",
       val: [
         "• You had a tough upbringing and had to fight to justify your place. You still have some moves.",
         "•• You received some training in hitting someone hard and accurately.",
@@ -33,7 +24,7 @@ export const skills = [
     },
     {
       label: "Craft",
-      type: "cra",
+      type: "Talents",
       val: [
         "• You are an amateur, but you know what you are doing.",
         "•• Your craftsmanship is admired for its functionality.",
@@ -44,7 +35,7 @@ export const skills = [
     },
     {
       label: "Drive",
-      type: "dri",
+      type: "Talents",
       val: [
         "• You are a cautious driver, unlikely to make any mistakes.",
         "•• You can put your foot down without much fear of an accident, providing visibility is good.",
@@ -55,7 +46,7 @@ export const skills = [
     },
     {
       label: "Firearms",
-      type: "fir",
+      type: "Talents",
       val: [
         "• You’ve fired a gun a few times, at the range or in less-formal circumstances.",
         "•• You know (and know how) to keep your weapon clean, take it apart, and reassemble it.",
@@ -66,7 +57,7 @@ export const skills = [
     },
     {
       label: "Larceny",
-      type: "lar",
+      type: "Talents",
       val: [
         "• You can pick a simple lock or a careless pocket.",
         "•• You can hotwire a car or shoplift with ease.",
@@ -77,7 +68,7 @@ export const skills = [
     },
     {
       label: "Melee",
-      type: "mel",
+      type: "Talents",
       val: [
         "• You can swing a bat or blade and mostly hit the people you intend to.",
         "•• Your clear competence with a weapon in hand should give attackers pause.",
@@ -88,7 +79,7 @@ export const skills = [
     },
     {
       label: "Stealth",
-      type: "ste",
+      type: "Talents",
       val: [
         "• Spotting you under the cover of darkness or in camouflage proves difficult.",
         "•• You can sneak by casual observers and stalk unknowing victims without raising any hackles.",
@@ -99,7 +90,7 @@ export const skills = [
     },
     {
       label: "Survival",
-      type: "sur",
+      type: "Talents",
       val: [
         "• You know the trails and wilderness around your domain.",
         "•• You spend more time outdoors than inside, and you can track anyone who doesn’t possess woodcraft.",
@@ -107,10 +98,10 @@ export const skills = [
         "•••• You can thrive outside the city like the true predator you are.",
         "••••• Gangrel run in packs with you – if they can keep up.",
       ],
-    },
-    {
+    }],
+    [{
       label: "Animal Ken",
-      type: "ani",
+      type: "Skills",
       val: [
         "• Animals shy away from you but will not bolt or snap.",
         "•• Animals are docile around you, acting as if you aren’t there, unless you build a rapport with them.",
@@ -121,7 +112,7 @@ export const skills = [
     },
     {
       label: "Etiquette",
-      type: "eti",
+      type: "Skills",
       val: [
         "• You know how to address your local ruler without causing a faux pas.",
         "•• You know the rules of etiquette in each of the domain’s popular nightspots.",
@@ -132,18 +123,18 @@ export const skills = [
     },
     {
       label: "Insight",
-      type: "ins",
+      type: "Skills",
       val: [
         "• You can see straight through hollow boasts.",
         "•• You pick up on the hidden emotion between humans and even sometimes between Kindred.",
         "••• You can provide psychotherapy even more effectively than someone who doesn’t want to eat their patient.",
         "•••• You are an undead lie detector. Only the best con artists can slip one by you.",
-        "••••• People may be books of blood, but they are printed in very large type – easy to read.",
+        "••••• People may be books of blood, but they are printed in very large fonts – easy to read.",
       ],
     },
     {
       label: "Intimidation",
-      type: "int",
+      type: "Skills",
       val: [
         "• You can cut a scathing insult effectively.",
         "•• You can push your way around most humans without difficulty.",
@@ -154,7 +145,7 @@ export const skills = [
     },
     {
       label: "Leadership",
-      type: "lea",
+      type: "Skills",
       val: [
         "• You have led informal clubs before and can organize Kindred of like mind.",
         "•• Your voice makes itself heard in council, and even your superiors sometimes listen.",
@@ -165,7 +156,7 @@ export const skills = [
     },
     {
       label: "Performance",
-      type: "perf",
+      type: "Skills",
       val: [
         "• You are the life of the party, but you wouldn’t take your act on stage.",
         "•• You have performed for others, to mixed reviews. Some love you, others hate you.",
@@ -176,7 +167,7 @@ export const skills = [
     },
     {
       label: "Persuasion",
-      type: "pers",
+      type: "Skills",
       val: [
         "• You can sell to a motivated buyer.",
         "•• You can always swing a discount or get on the inside track of the latest gossip.",
@@ -187,7 +178,7 @@ export const skills = [
     },
     {
       label: "Streetwise",
-      type: "str",
+      type: "Skills",
       val: [
         "• You know where to score drugs and sex in your domain.",
         "•• You know which gangs operate in the area, including their colors and rivalries. You may have your own graffiti tag.",
@@ -198,7 +189,7 @@ export const skills = [
     },
     {
       label: "Subterfuge",
-      type: "sub",
+      type: "Skills",
       val: [
         "• You can tell believable, simple lies.",
         "•• You can hustle naive people, old and young, into giving you their things.",
@@ -206,10 +197,10 @@ export const skills = [
         "•••• You can operate endlessly in deep cover: a perfect double agent. Perhaps you are!",
         "••••• Nobody believes you have even a single dot in Subterfuge.",
       ],
-    },
-    {
+    }],
+    [{
       label: "Academics",
-      type: "aca",
+      type: "Knowledges",
       val: [
         "• Basic primary and secondary education; a night class at community college",
         "•• Basic university education or tutelage from a mediocre mentor; a four-year degree",
@@ -305,6 +296,6 @@ export const skills = [
         "•••• The Prince might call you personally to manage cybersecurity for their domain.",
         "••••• On the internet, nobody knows you’re a vampire – or that you’re there at all.",
       ],
-    },
+    }],
   ];
   

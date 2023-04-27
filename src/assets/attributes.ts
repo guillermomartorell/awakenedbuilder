@@ -2,7 +2,7 @@ export const attributes = [
   [
     {
       label: "Strength",
-      type: "str",
+      type: "physical",
       val: [
         "• You can easily crush a beer can. (20 kg: a Christmas tree, a stop sign",
         "•• You are physically average. (45 kg: a toilet)",
@@ -13,7 +13,7 @@ export const attributes = [
     },
     {
       label: "Dexterity",
-      type: "dex",
+      type: "physical",
       val: [
         "• You can run, but balance and dodging are a challenge.",
         "•• Your sprint is solid, and sometimes you appear graceful.",
@@ -25,7 +25,7 @@ export const attributes = [
 
     {
       label: "Stamina",
-      type: "sta",
+      type: "physical",
       val: [
         "• Even lesser exertions make you winded.",
         "•• You can take a beating, but consider suing for peace",
@@ -38,7 +38,7 @@ export const attributes = [
   [
     {
       label: "Charisma",
-      type: "cha",
+      type: "social",
       val: [
         "• You can speak clearly, though few people tend to listen.",
         "•• Generally likeable despite your undead nature, you may even have friends.",
@@ -49,7 +49,7 @@ export const attributes = [
     },
     {
       label: "Manipulation",
-      type: "man",
+      type: "social",
       val: [
         "• As long as you stay honest, you can convince people to do what you want.",
         "•• Your ability to deceive surpasses the will of the weak-willed and simple-minded.",
@@ -60,7 +60,7 @@ export const attributes = [
     },
     {
       label: "Composure",
-      type: "com",
+      type: "social",
       val: [
         "• The slightest insult or confrontation could drive you to frenzy.",
         "•• You can subdue your predatory instincts in most non-hostile situations.",
@@ -73,7 +73,7 @@ export const attributes = [
   [
     {
       label: "Intelligence",
-      type: "int",
+      type: "mental",
       val: [
         "• You can read and write competently, though some terms confound you.",
         "•• You are smart enough to realize your limitations.",
@@ -84,7 +84,7 @@ export const attributes = [
     },
     {
       label: "Wits",
-      type: "wit",
+      type: "mental",
       val: [
         "• You get the point eventually,but it takes explaining.",
         "•• You can bet the odds in poker or apply the emergency brakes in time. Usually.",
@@ -95,7 +95,7 @@ export const attributes = [
     },
     {
       label: "Resolve",
-      type: "res",
+      type: "mental",
       val: [
         "• You have minimal attention for all but the most pressing things.",
         "•• You can settle in for the long haul, as long as it’s not too long.",
