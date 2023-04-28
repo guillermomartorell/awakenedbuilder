@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5%;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+h1 {
+  font-family: "Aladin", cursive;
+  font-size: 3rem;
+  line-height: 4rem;
+  background: linear-gradient(to right, #b8860b, #c99b0e, #d6ae11, #e1bf14, #ecce17);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.category {
+  background: linear-gradient(to bottom, #e1b658 50%, #c9b67d 50%);
+  background-size: 100% 2px;
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  h2 {
+    display: inline;
+    margin: 0.5rem 0;
+    background-color: white;
+    padding: 0 0.3rem;
+    font-family: "Special Elite", cursive;
+  }
+}

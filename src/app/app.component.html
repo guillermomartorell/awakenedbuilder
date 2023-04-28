@@ -1,3 +1,11 @@
-<h1>Awakened Builder</h1>
-<app-section [data]="attributes" [type]='attributesType'></app-section>
-<app-section [data]="skills" [type]='skillsType'></app-section>
+<div class="wrapper">
+  <h1 class="center">Mage</h1>
+  <div class="category">
+    <h2 class="center">Attributes</h2>
+  </div>
+  <app-section [data]="attributes" [type]="attributesType"></app-section>
+  <div class="category">
+    <h2 class="center">Abilities</h2>
+  </div>
+  <app-section [data]="skills" [type]="skillsType"></app-section>
+</div>

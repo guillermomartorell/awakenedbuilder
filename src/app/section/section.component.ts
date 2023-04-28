@@ -7,17 +7,20 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
   template: `
     <div class="wrapper">
       <div class="attr-section" *ngFor="let attributeGroup of data">
-        <h4>
-          {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
-        </h4>
+        <div class="attr-type">
+          <h3 class="center">
+            {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
+          </h3>
+        </div>
         <div class="attr" *ngFor="let attribute of attributeGroup">
           <strong>{{ attribute.label }}</strong>
-          <div>
+          <div class="rating-wrapper">
             <app-star-rating
               [type]="type"
               (rated)="handleRated($event, attribute.type, attribute.label)"
             ></app-star-rating>
           </div>
+          <div class="underline"></div>
         </div>
       </div>
     </div>
@@ -39,8 +42,8 @@ export class SectionComponent implements OnInit {
     }
     this.config = {
       panelClass: 'manzanamanzanamanzana',
-      duration: 0
-    }
+      duration: 0,
+    };
   }
 
   handleRated(value: number, type: string, label: string) {
