@@ -41,7 +41,6 @@ export class SectionComponent implements OnInit {
       this.attrSum[attributeGroup[0].type] = 0;
     }
     this.config = {
-      panelClass: 'manzanamanzanamanzana',
       duration: 0,
     };
   }
@@ -52,6 +51,12 @@ export class SectionComponent implements OnInit {
 
     if (index === -1) {
       this.attrObj.push(insert);
+    } else if (value === 1 && this.attrObj[index].value === 1) {
+      this.attrObj[index] = {
+        label: label,
+        value: 0,
+        type: type,
+      };
     } else {
       this.attrObj[index] = insert;
     }
