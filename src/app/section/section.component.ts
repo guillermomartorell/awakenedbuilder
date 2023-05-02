@@ -58,7 +58,10 @@ export class SectionComponent implements OnInit {
         this.currentData.push(element);
         element?.forEach((e: any) => {
           if (e.value !== 0) {
-            this.attrSum[e.type] += e.value;
+            this.type === 'attributes'
+              ? (this.attrSum[e.type] += e.value - 1)
+              : (this.attrSum[e.type] += e.value);
+
             this.save[this.type].forEach((elemen: any) => {
               elemen.forEach((el: any) => {
                 if (el.label === e.label) {
@@ -91,23 +94,12 @@ export class SectionComponent implements OnInit {
       this.attrObj[index] = insert;
     }
 
-    const thisData = this.currentData;
-    const sum = this.attrObj
-      .filter((item) => item.type === type)
-      .reduce((sum, item) => {
-        if (this.type === 'attributes') {
-          return sum + item.value - 1;
-        }
-        return sum + item.value;
-      }, 0);
-
-    this.attrSum[type] = sum;
-
     this.desc.forEach((element: any) => {
       element.forEach((attribute: any) => {
         if (attribute.label === label) {
           this.description = `${label}: ${attribute.val[value - 1]}`;
         }
+        console.log(attribute);
       });
     });
 
@@ -119,6 +111,20 @@ export class SectionComponent implements OnInit {
         }
       });
     });
+    this.save[this.type].forEach((element: any) => {
+      let filtered = element.filter((item: any) => item.type === type);
+      let currentType: any = filtered[0]?.type;
+      let sum = filtered.reduce((sum: any, item: any) => {
+        if (this.type === 'attributes') {
+          return sum + item.value - 1;
+        }
+        return sum + item.value;
+      }, 0);
+      if (currentType) {
+        this.attrSum[currentType] = sum;
+      }
+    });
+
     localStorage.setItem('myData', JSON.stringify(this.save));
   }
 }
