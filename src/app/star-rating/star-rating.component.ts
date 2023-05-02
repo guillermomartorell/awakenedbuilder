@@ -14,6 +14,7 @@ export class StarRatingComponent implements OnInit {
   selectedRating = 0;
   @Output() rated: EventEmitter<any> = new EventEmitter<any>();
   @Input() type: any;
+  @Input() value: any;
   stars: any;
   isAttr: boolean = false;
 
@@ -51,6 +52,19 @@ export class StarRatingComponent implements OnInit {
         value: 1,
       },
     ];
+    this.stars.filter((star: any) => {
+      if (star.id === 1 && this.isAttr) {
+          star.icon = this.solidCircleIcon
+      } else if (star.id <= this.value) {
+        star.class = 'star-gold star';
+        star.icon = this.solidCircleIcon;
+      } else {
+        star.class = 'star-gray star';
+        star.icon = this.regCircleIcon;
+      }
+
+      return star;
+    });
   }
 
   selectStar(value: any): void {

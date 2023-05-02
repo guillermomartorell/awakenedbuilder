@@ -8,7 +8,7 @@ import { save } from 'src/assets/save';
   selector: 'app-section',
   template: `
     <div class="wrapper">
-      <div class="attr-section" *ngFor="let attributeGroup of data">
+      <div class="attr-section" *ngFor="let attributeGroup of save[this.type]">
         <div class="attr-type">
           <h3 class="center">
             {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
@@ -18,6 +18,7 @@ import { save } from 'src/assets/save';
           <strong>{{ attribute.label }}</strong>
           <div class="rating-wrapper">
             <app-star-rating
+              [value]="attribute.value"
               [type]="type"
               (rated)="handleRated($event, attribute.type, attribute.label)"
             ></app-star-rating>
@@ -30,9 +31,12 @@ import { save } from 'src/assets/save';
   styleUrls: ['./section.component.scss'],
 })
 export class SectionComponent implements OnInit {
-  @Input() data: any[][] = [];
+  // @Input() data: any[][] = [];
   @Input() type: string = '';
-  attrSum: Record<string, number> = {};
+  @Input() desc: any;
+  @Input() data: any;
+  currentData: any = [];
+  attrSum: any = {};
   attrObj: any[] = [];
   description: string = 'Description: []';
   config: any = new MatSnackBarConfig();
@@ -41,7 +45,7 @@ export class SectionComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    for (const attributeGroup of this.data) {
+    for (const attributeGroup of this.save[this.type]) {
       this.attrSum[attributeGroup[0].type] = 0;
     }
     this.config = {
@@ -49,10 +53,25 @@ export class SectionComponent implements OnInit {
     };
     const data: any = localStorage.getItem('myData');
     if (data) {
-      // this.save = JSON.parse(data);
-      // console.log(this.save);
-      // console.log(data);
-      console.log(JSON.parse(data));
+      const savedData = JSON.parse(data)[this.type];
+      savedData.forEach((element: any) => {
+        this.currentData.push(element);
+        element?.forEach((e: any) => {
+          if (e.value !== 0) {
+            this.attrSum[e.type] += e.value;
+            this.save[this.type].forEach((elemen: any) => {
+              elemen.forEach((el: any) => {
+                if (el.label === e.label) {
+                  el.value = e.value;
+                  console.log(el);
+                }
+              });
+            });
+          }
+        });
+      });
+    } else {
+      this.currentData = this.data;
     }
   }
 
@@ -72,6 +91,7 @@ export class SectionComponent implements OnInit {
       this.attrObj[index] = insert;
     }
 
+    const thisData = this.currentData;
     const sum = this.attrObj
       .filter((item) => item.type === type)
       .reduce((sum, item) => {
@@ -83,8 +103,8 @@ export class SectionComponent implements OnInit {
 
     this.attrSum[type] = sum;
 
-    this.data.forEach((attributeGroup) => {
-      attributeGroup.forEach((attribute) => {
+    this.desc.forEach((element: any) => {
+      element.forEach((attribute: any) => {
         if (attribute.label === label) {
           this.description = `${label}: ${attribute.val[value - 1]}`;
         }
@@ -95,8 +115,7 @@ export class SectionComponent implements OnInit {
     this.save[this.type].forEach((element: any) => {
       element.forEach((el: any) => {
         if (el.label === label) {
-          // console.log(el);
-          el.value = value
+          el.value = value;
         }
       });
     });
