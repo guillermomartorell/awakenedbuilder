@@ -54,7 +54,7 @@ export class StarRatingComponent implements OnInit {
     ];
     this.stars.filter((star: any) => {
       if (star.id === 1 && this.isAttr) {
-          star.icon = this.solidCircleIcon
+        star.icon = this.solidCircleIcon;
       } else if (star.id <= this.value) {
         star.class = 'star-gold star';
         star.icon = this.solidCircleIcon;
@@ -67,9 +67,12 @@ export class StarRatingComponent implements OnInit {
     });
   }
 
-  selectStar(value: any): void {
+  selectStar(received: any): void {
     // prevent multiple selection
     // if (this.selectedRating === 0) {
+    let value = received === 0 ? this.rated.emit(received) : received;
+    // this.rated.emit(value);
+
     this.stars.filter((star: any) => {
       if (star.id <= value) {
         star.class = 'star-gold star';

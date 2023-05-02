@@ -66,7 +66,6 @@ export class SectionComponent implements OnInit {
               elemen.forEach((el: any) => {
                 if (el.label === e.label) {
                   el.value = e.value;
-                  console.log(el);
                 }
               });
             });
@@ -79,52 +78,74 @@ export class SectionComponent implements OnInit {
   }
 
   handleRated(value: number, type: string, label: string) {
-    const insert: any = { label, value, type };
-    const index = this.attrObj.findIndex((el) => el.label === label);
+    if (value > 0) {
+      const insert: any = { label, value, type };
+      const index = this.attrObj.findIndex((el) => el.label === label);
 
-    if (index === -1) {
-      this.attrObj.push(insert);
-    } else if (value === 1 && this.attrObj[index].value === 1) {
-      this.attrObj[index] = {
-        label: label,
-        value: 0,
-        type: type,
-      };
-    } else {
-      this.attrObj[index] = insert;
-    }
-
-    this.desc.forEach((element: any) => {
-      element.forEach((attribute: any) => {
-        if (attribute.label === label) {
-          this.description = `${label}: ${attribute.val[value - 1]}`;
-        }
-        console.log(attribute);
-      });
-    });
-
-    this._snackBar.open(this.description, 'Dismiss', this.config);
-    this.save[this.type].forEach((element: any) => {
-      element.forEach((el: any) => {
-        if (el.label === label) {
-          el.value = value;
-        }
-      });
-    });
-    this.save[this.type].forEach((element: any) => {
-      let filtered = element.filter((item: any) => item.type === type);
-      let currentType: any = filtered[0]?.type;
-      let sum = filtered.reduce((sum: any, item: any) => {
-        if (this.type === 'attributes') {
-          return sum + item.value - 1;
-        }
-        return sum + item.value;
-      }, 0);
-      if (currentType) {
-        this.attrSum[currentType] = sum;
+      if (index === -1) {
+        this.attrObj.push(insert);
+      } else if (value === 1 && this.attrObj[index].value === 1) {
+        this.attrObj[index] = {
+          label: label,
+          value: 0,
+          type: type,
+        };
+      } else {
+        this.attrObj[index] = insert;
       }
-    });
 
-    localStorage.setItem('myData', JSON.stringify(this.save));
+      this.desc.forEach((element: any) => {
+        element.forEach((attribute: any) => {
+          if (attribute.label === label) {
+            this.description = `${label}: ${attribute.val[value - 1]}`;
+          }
+        });
+      });
+
+      this._snackBar.open(this.description, 'Dismiss', this.config);
+      this.save[this.type].forEach((element: any) => {
+        element.forEach((el: any) => {
+          if (el.label === label) {
+            el.value = value;
+          }
+        });
+      });
+      this.save[this.type].forEach((element: any) => {
+        let filtered = element.filter((item: any) => item.type === type);
+        let currentType: any = filtered[0]?.type;
+        let sum = filtered.reduce((sum: any, item: any) => {
+          if (this.type === 'attributes') {
+            return sum + item.value - 1;
+          }
+          return sum + item.value;
+        }, 0);
+        if (currentType) {
+          this.attrSum[currentType] = sum;
+        }
+      });
+
+      localStorage.setItem('myData', JSON.stringify(this.save));
+    } else {
+      this.save[this.type].forEach((element: any) => {
+        element.forEach((ele: any) => {
+          if (ele.label === label) {
+            ele.value = 0;
+          }
+        });
+        let filtered = element.filter((item: any) => item.type === type);
+        let currentType: any = filtered[0]?.type;
+        let sum = filtered.reduce((sum: any, item: any) => {
+          if (this.type === 'attributes') {
+            return sum + item.value - 1;
+          }
+          return sum + item.value;
+        }, 0);
+        if (currentType) {
+          this.attrSum[currentType] = sum;
+        }
+      });
+
+      localStorage.setItem('myData', JSON.stringify(this.save));
+    }
   }
 }
