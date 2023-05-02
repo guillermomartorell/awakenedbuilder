@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
+import { save } from 'src/assets/save';
+
 @Component({
   selector: 'app-section',
   template: `
@@ -34,6 +36,8 @@ export class SectionComponent implements OnInit {
   attrObj: any[] = [];
   description: string = 'Description: []';
   config: any = new MatSnackBarConfig();
+  save: any = save;
+
   constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
@@ -43,6 +47,13 @@ export class SectionComponent implements OnInit {
     this.config = {
       duration: 0,
     };
+    const data: any = localStorage.getItem('myData');
+    if (data) {
+      // this.save = JSON.parse(data);
+      // console.log(this.save);
+      // console.log(data);
+      console.log(JSON.parse(data));
+    }
   }
 
   handleRated(value: number, type: string, label: string) {
@@ -81,5 +92,14 @@ export class SectionComponent implements OnInit {
     });
 
     this._snackBar.open(this.description, 'Dismiss', this.config);
+    this.save[this.type].forEach((element: any) => {
+      element.forEach((el: any) => {
+        if (el.label === label) {
+          // console.log(el);
+          el.value = value
+        }
+      });
+    });
+    localStorage.setItem('myData', JSON.stringify(this.save));
   }
 }
