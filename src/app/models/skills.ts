@@ -1,5 +1,6 @@
+import { IStat } from "../interfaces/stat";
 
-export const skills = [
+export const skills: IStat[][] = [
   [
     {
       label: "Alertness",

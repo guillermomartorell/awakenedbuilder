@@ -1,4 +1,6 @@
-export const attributes = [
+import { IStat } from "../interfaces/stat";
+
+export const attributes: IStat[][] = [
   [
     {
       label: 'Strength',

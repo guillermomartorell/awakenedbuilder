@@ -1,4 +1,11 @@
-export const save = {
+export interface ISave {
+  attributes: ISavedStat[][];
+  skills: ISavedStat[][];
+}
+
+export interface ISavedStat {label: string, type: string, value: number}
+
+export const save: ISave = {
   "attributes": [
     [
       {
