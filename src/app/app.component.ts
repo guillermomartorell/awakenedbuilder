@@ -4,8 +4,8 @@ import { save } from 'src/assets/save';
 import { skills } from 'src/assets/skills';
 
 @Component({
-  selector: 'app-root',
-  template: `
+    selector: 'app-root',
+    template: `
     <div class="wrapper">
       <h1 class="center">Mage</h1>
       <div class="category">
@@ -18,7 +18,8 @@ import { skills } from 'src/assets/skills';
       <app-section [desc]="skills" [type]="skillsType"></app-section>
     </div>
   `,
-  styleUrls: ['./app.component.scss'],
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent {
   title = 'awakened-builder';

@@ -5,8 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { save } from 'src/assets/save';
 
 @Component({
-  selector: 'app-section',
-  template: `
+    selector: 'app-section',
+    template: `
     <div class="wrapper">
       <div class="attr-section" *ngFor="let attributeGroup of save[this.type]">
         <div class="attr-type">
@@ -28,7 +28,8 @@ import { save } from 'src/assets/save';
       </div>
     </div>
   `,
-  styleUrls: ['./section.component.scss'],
+    styleUrls: ['./section.component.scss'],
+    standalone: false
 })
 export class SectionComponent implements OnInit {
   // @Input() data: any[][] = [];
