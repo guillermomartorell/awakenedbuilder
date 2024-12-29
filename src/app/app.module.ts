@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { SectionComponent } from './section/section.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+// import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    // MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

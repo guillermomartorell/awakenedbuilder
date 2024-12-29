@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+// import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { save } from 'src/assets/save';
 
@@ -39,18 +39,20 @@ export class SectionComponent implements OnInit {
   attrSum: any = {};
   attrObj: any[] = [];
   description: string = 'Description: []';
-  config: any = new MatSnackBarConfig();
+  // config: any = new MatSnackBarConfig();
   save: any = save;
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(
+    // private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     for (const attributeGroup of this.save[this.type]) {
       this.attrSum[attributeGroup[0].type] = 0;
     }
-    this.config = {
-      duration: 0,
-    };
+    // this.config = {
+    //   duration: 0,
+    // };
     const data: any = localStorage.getItem('myData');
     if (data) {
       const savedData = JSON.parse(data)[this.type];
@@ -102,7 +104,7 @@ export class SectionComponent implements OnInit {
         });
       });
 
-      this._snackBar.open(this.description, 'Dismiss', this.config);
+      // this._snackBar.open(this.description, 'Dismiss', this.config);
       this.save[this.type].forEach((element: any) => {
         element.forEach((el: any) => {
           if (el.label === label) {
