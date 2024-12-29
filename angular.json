@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "awakened-builder:build:production"
+              "buildTarget": "awakened-builder:build:production"
             },
             "development": {
-              "browserTarget": "awakened-builder:build:development"
+              "buildTarget": "awakened-builder:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "awakened-builder:build"
+            "buildTarget": "awakened-builder:build"
           }
         },
         "test": {
