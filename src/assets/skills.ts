@@ -285,7 +285,7 @@ export const skills = [
       type: "Knowledges",
       val: [
         "• Dabbler: Basic primary and secondary education.",
-        "•• Student: Basic university education, equivalentto a two - year degree.",
+        "•• Student: Basic university education, equivalent to a two - year degree.",
         "••• Scholar: Advanced university education, equivalent to a four-year degree.",
         "•••• Professor: Advanced specialized study, plus an advanced university-level education.",
         "••••• Master: Refined and advanced scholarship, with highly respected academic achievements.",

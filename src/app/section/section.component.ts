@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { save } from 'src/assets/save';
 
 @Component({
-  selector: 'app-section',
-  template: `
+    selector: 'app-section',
+    template: `
     <div class="wrapper">
       <div class="attr-section" *ngFor="let attributeGroup of save[this.type]">
         <div class="attr-type">
@@ -28,7 +27,8 @@ import { save } from 'src/assets/save';
       </div>
     </div>
   `,
-  styleUrls: ['./section.component.scss'],
+    styleUrls: ['./section.component.scss'],
+    standalone: false
 })
 export class SectionComponent implements OnInit {
   // @Input() data: any[][] = [];
@@ -42,7 +42,9 @@ export class SectionComponent implements OnInit {
   config: any = new MatSnackBarConfig();
   save: any = save;
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     for (const attributeGroup of this.save[this.type]) {
