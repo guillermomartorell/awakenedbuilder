@@ -50,9 +50,9 @@ export class SectionComponent implements OnInit {
     for (const attributeGroup of this.save[this.type]) {
       this.attrSum[attributeGroup[0].type] = 0;
     }
-    // this.config = {
-    //   duration: 0,
-    // };
+    this.config = {
+      duration: 0,
+    };
     const data: any = localStorage.getItem('myData');
     if (data) {
       const savedData = JSON.parse(data)[this.type];
