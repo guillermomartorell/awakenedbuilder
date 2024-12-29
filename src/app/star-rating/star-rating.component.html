@@ -8,9 +8,9 @@
   </ng-container>
   <div
     *ngFor="let star of stars"
+    [ngClass]="[star.class]"
     (click)="selectStar(star.id)"
     >
-    <!-- [ngClass]="[star.class]" -->
-    <!-- <fa-icon [icon]="star.icon"></fa-icon> -->
+    <fa-icon [icon]="star.icon"></fa-icon>
   </div>
 </div>

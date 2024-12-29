@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 // import { faCircle } from '@fortawesome/free-solid-svg-icons';
-// import * as solid from '@fortawesome/free-solid-svg-icons';
-// import * as regular from '@fortawesome/free-regular-svg-icons';
+import * as solid from '@fortawesome/free-solid-svg-icons';
+import * as regular from '@fortawesome/free-regular-svg-icons';
 
 @Component({
     selector: 'app-star-rating',
@@ -10,8 +10,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     standalone: false
 })
 export class StarRatingComponent implements OnInit {
-  solidCircleIcon: any = 'solid.faCircle';
-  regCircleIcon: any = 'regular.faCircle';
+  solidCircleIcon: any = solid.faCircle;
+  regCircleIcon: any = regular.faCircle;
   selectedRating = 0;
   @Output() rated: EventEmitter<any> = new EventEmitter<any>();
   @Input() type: any;

@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { SectionComponent } from './section/section.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    // MatSnackBarModule
+    FontAwesomeModule,
+    MatSnackBarModule
   ],
   providers: [
     provideAnimationsAsync()
