@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { attributes } from 'src/assets/attributes';
-import { save } from 'src/assets/save';
-import { skills } from 'src/assets/skills';
+import { attributes } from 'src/app/models/attributes';
+import { save } from 'src/app/models/save';
+import { skills } from 'src/app/models/skills';
+import { IStat, EStat } from './interfaces/stat';
 
 @Component({
     selector: 'app-root',
@@ -11,21 +12,19 @@ import { skills } from 'src/assets/skills';
       <div class="category">
         <h2 class="center">Attributes</h2>
       </div>
-      <app-section [desc]="attributes" [type]="attributesType"></app-section>
+      <app-section [desc]="attributesDesc" [type]="EStat.ATTRIBUTE"></app-section>
       <div class="category">
         <h2 class="center">Abilities</h2>
       </div>
-      <app-section [desc]="skills" [type]="skillsType"></app-section>
+      <app-section [desc]="skillsDesc" [type]="EStat.SKILL"></app-section>
     </div>
   `,
     styleUrls: ['./app.component.scss'],
     standalone: false
 })
 export class AppComponent {
-  title = 'awakened-builder';
-  skills: any = skills;
-  attributes = attributes;
-  attributesType = 'attributes';
-  skillsType = 'skills';
+  skillsDesc:IStat[][] = skills;
+  attributesDesc:IStat[][] = attributes;
 
+  protected readonly EStat = EStat
 }
