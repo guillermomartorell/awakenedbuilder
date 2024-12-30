@@ -35,6 +35,7 @@ import { CustomSnackComponent } from '../components/custom-snack/custom-snack.co
 export class SectionComponent implements OnInit {
   @Input() type: EStat = EStat.ATTRIBUTE;
   @Input() desc: IStat[][] = [];
+  @Input() counterType: any = null;
   currentData: IStat[][] = [];
   attrSum: any = {};
   attrObj: any[] = [];
@@ -44,7 +45,9 @@ export class SectionComponent implements OnInit {
   };
   save = signal(save);
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private _snackBar: MatSnackBar) {
+    console.log(this.counterType)
+  }
 
   ngOnInit() {
     this.config = {

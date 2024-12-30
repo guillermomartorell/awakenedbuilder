@@ -9,7 +9,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomSnackComponent } from './components/custom-snack/custom-snack.component';
-
+import {MatRadioModule} from '@angular/material/radio';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { CustomSnackComponent } from './components/custom-snack/custom-snack.com
     BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    MatRadioModule,
+    FormsModule,
     MatSnackBarModule
   ],
   providers: [
