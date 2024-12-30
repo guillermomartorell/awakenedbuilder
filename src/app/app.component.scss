@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   align-items: flex-start;
   background-color: #dfdfcc;
 }
@@ -13,7 +13,7 @@
   flex-direction: column;
   max-width: 1024px;
   flex-grow: 1;
-  padding: 0 2%;
+  padding-bottom: 5%;
 }
 
 .cool-border{
@@ -31,7 +31,7 @@
 }
 .bg-side{
   width: calc((100vw - 1024px)/2);
-  height: 100vh;
+  height: 1024px;
 }
 
 h1,
@@ -58,10 +58,17 @@ h1 {
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
-  h2 {
+  position: relative;
+
+  h2, h3 {
     display: inline;
     margin: 0.5rem 0;
     padding: 0 0.3rem;
     font-family: "Special Elite", cursive;
+  }
+  h3{
+    position: absolute;
+    top: -24px;
+    font-size: smaller;
   }
 }

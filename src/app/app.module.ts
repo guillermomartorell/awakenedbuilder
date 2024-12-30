@@ -11,13 +11,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomSnackComponent } from './components/custom-snack/custom-snack.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
+import { CounterStateService } from './services/counter-state.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SectionComponent,
     CustomSnackComponent,
-    StarRatingComponent
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,8 @@ import {FormsModule} from '@angular/forms';
     MatSnackBarModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    CounterStateService
   ],
   bootstrap: [AppComponent]
 })

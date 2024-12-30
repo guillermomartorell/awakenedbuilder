@@ -1,20 +1,23 @@
 import { Component, Input, OnInit, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
-import { ISavedStat, save } from 'src/app/models/save';
-import { EStat, IStat } from '../interfaces/stat';
+import { ISave, ISavedStat, save } from 'src/app/models/save';
+import { EStat, isGroupedCounter, IStat } from '../interfaces/stat';
 import { CustomSnackComponent } from '../components/custom-snack/custom-snack.component';
+import { CounterStateService } from '../services/counter-state.service';
 
 @Component({
     selector: 'app-section',
     template: `
     <div class="wrapper">
-      <div class="attr-section" *ngFor="let attributeGroup of save()[this.type]">
-        <div class="attr-type">
-          <h3 class="center">
-            {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
-          </h3>
-        </div>
+      <div class="attr-section" *ngFor="let attributeGroup of countSv.save$()[this.type]">
+        @if(groupedCounter()){
+          <div class="attr-type">
+            <h3 class="center">
+              {{ attributeGroup[0].type }}: {{ attrSum[attributeGroup[0].type] }}
+            </h3>
+          </div>
+        }
         <div class="attr" *ngFor="let attribute of attributeGroup">
           <strong>{{ attribute.label }}</strong>
           <div class="rating-wrapper">
@@ -35,40 +38,39 @@ import { CustomSnackComponent } from '../components/custom-snack/custom-snack.co
 export class SectionComponent implements OnInit {
   @Input() type: EStat = EStat.ATTRIBUTE;
   @Input() desc: IStat[][] = [];
+  @Input() state: ISave = save;
   @Input() counterType: any = null;
   currentData: IStat[][] = [];
-  attrSum: any = {};
+  attrSum: Record<string, number> = {};
   attrObj: any[] = [];
   description: string[] = ['Description: []'];
   config: MatSnackBarConfig = {
     duration: 0,
   };
-  save = signal(save);
+  groupedCounter = signal(true)
 
-  constructor(private _snackBar: MatSnackBar) {
-    console.log(this.counterType)
-  }
+  constructor(private _snackBar: MatSnackBar, public countSv: CounterStateService) {}
 
   ngOnInit() {
     this.config = {
       duration: 0,
     };
-    const data: JSON | string | null = localStorage.getItem('myData');
-    if (data && data !== 'undefined') {
-      const parseData = JSON.parse(data)
-      const savedData: ISavedStat[][] = parseData[this.type];
-      this.setCurrentSum(savedData)
-      this.save.set(parseData)
-    }
+    this.groupedCounter.set(isGroupedCounter(this.type))
+    this.countSv.updateState(this.type, this.setCurrentSum())
   }
-  setCurrentSum(savedData: ISavedStat[][]) {
-    savedData.forEach((statList: ISavedStat[]) => {
+
+  setCurrentSum() {
+    const savedData = this.countSv.save$()[this.type]
+    this.groupedCounter() 
+    ? savedData.forEach((statList: ISavedStat[]) => {
       const sum = statList.map(el => el.value).reduce((prev, curr) => {
         const currentVal = this.type === EStat.ATTRIBUTE && curr > 0 ? curr -1 : curr
         return prev += currentVal
       }, 0);
       this.attrSum[statList[0].type] = sum
     })
+    : this.attrSum[EStat.SPHERE] = savedData.map(data=> data.map(dat=>dat.value).reduce((prev,curr) => prev += curr)).reduce((prev,curr) => prev += curr)
+    return this.attrSum
   }
 
   handleRated(value: number, type: string, label: string) {
@@ -104,15 +106,24 @@ export class SectionComponent implements OnInit {
           data: this.description
         });
       }
-      this.save()[this.type].forEach((element: any) => {
-        element.forEach((el: any) => {
+      const newState = this.countSv.save$()
+      newState[this.type].forEach((element: ISavedStat[]) => {
+        element.forEach((el: ISavedStat) => {
           if (el.label === label) {
-            el.value != value ? el.value = value : el.value = 0;
+            if(el.value === value && el.value === 1){
+              el.value = 0
+            } else if (el.value === value){
+              el.value = el.value - 1
+            } else {
+              el.value = value
+            }
           }
         });
       });
-      this.setCurrentSum(this.save()[this.type])
-
-      localStorage.setItem('myData', JSON.stringify(this.save()));
+      this.countSv.save$.set(newState)
+      this.countSv.updateState(this.type, this.setCurrentSum())
+      this.countSv.saveData()
   }
+
+  readonly EStat = EStat
 }
