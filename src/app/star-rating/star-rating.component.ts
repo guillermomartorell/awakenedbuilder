@@ -68,7 +68,15 @@ export class StarRatingComponent implements OnInit {
   }
 
   selectStar(received: any): void {
-    let value = !this.isAttr && received === 1 && this.value === 1 ? 0 : received;
+    let value = 0 
+    if(!this.isAttr && received === 1 && this.value === 1){
+      value = 0
+    } else if(received !== 1 && this.value === received){
+      value = received -1
+    } else {
+      value = received;
+    }
+    
  
     this.stars.filter((star: any) => {
       if (star.id <= value) {

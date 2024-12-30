@@ -3,6 +3,8 @@ import { attributes } from 'src/app/models/attributes';
 import { skills } from 'src/app/models/skills';
 import { IStat, EStat } from './interfaces/stat';
 import { ECounter } from './interfaces/enums';
+import { spheres } from './models/spheres';
+import { CounterStateService } from './services/counter-state.service';
 @Component({
     selector: 'app-root',
     template: `
@@ -24,15 +26,26 @@ import { ECounter } from './interfaces/enums';
       </h1>
       <div class="cool-border">
         <div class="category">
+          <h3 *ngIf="counterType === ECounter.CREATE" class="center">Character Creation: ( 7 / 5 / 3 )</h3>
           <h2 class="center">Attributes</h2>
         </div>
         <app-section [counterType]="counterType" [desc]="attributesDesc" [type]="EStat.ATTRIBUTE"></app-section>
       </div>
       <div class="cool-border">
         <div class="category">
-          <h2 class="center">Abilities</h2>
+        <h3 *ngIf="counterType === ECounter.CREATE" class="center">Character Creation:  ( 13 / 9 / 5 )</h3>  
+        <h2 class="center">Abilities</h2>
         </div>
         <app-section [counterType]="counterType" [desc]="skillsDesc" [type]="EStat.SKILL"></app-section>
+      </div>
+      <div class="cool-border">
+        <div class="category">
+        <h2 class="center">
+            Spheres
+            <span>: {{stateSvc.creationCounterState$()[EStat.SPHERE]}}</span>
+          </h2>
+        </div>
+        <app-section [counterType]="counterType" [desc]="spheresDesc" [type]="EStat.SPHERE"></app-section>
       </div>
     </div>
     <div class="bg-r bg-side"></div>
@@ -42,14 +55,21 @@ import { ECounter } from './interfaces/enums';
     standalone: false
 })
 export class AppComponent {
+
+  constructor(public stateSvc: CounterStateService){
+    this.stateSvc.setState()
+  }
+
   skillsDesc:IStat[][] = skills;
   attributesDesc:IStat[][] = attributes;
-  counterType: string = 'creation';
+  spheresDesc:IStat[][] = spheres;
+  counterType: string = ECounter.CREATE;
   counterTypes: {key: string; label: string}[] = [
     {key: ECounter.CREATE, label: 'Character Creation'}, 
     {key: ECounter.FREEBIE, label: 'Freebies'}, 
     {key: ECounter.EXPERIENCE, label: 'Experience'}];
 
+  
   protected readonly EStat = EStat
   protected readonly ECounter = ECounter
 }

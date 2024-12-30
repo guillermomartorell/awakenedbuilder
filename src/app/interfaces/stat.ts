@@ -9,5 +9,8 @@ export interface IStat {
 
   export enum EStat {
     ATTRIBUTE = 'attributes',
-    SKILL = 'skills'
+    SKILL = 'skills',
+    SPHERE = 'spheres'
   }
+
+  export const isGroupedCounter = (type: EStat) => type === EStat.SKILL || type === EStat.ATTRIBUTE ? true : false

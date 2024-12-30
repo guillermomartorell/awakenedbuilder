@@ -1,6 +1,9 @@
+import { EStat } from "../interfaces/stat";
+
 export interface ISave {
   attributes: ISavedStat[][];
   skills: ISavedStat[][];
+  spheres: ISavedStat[][]; 
 }
 
 export interface ISavedStat {label: string, type: string, value: number}
@@ -232,5 +235,59 @@ export const save: ISave = {
         "value": 0
       }
     ]
-  ]
+  ],
+  "spheres": [
+    [
+      {
+        "label": 'Correspondence',
+        "type": EStat.SPHERE,
+        "value": 0
+      },
+      {
+        "label": 'Entropy',
+        "type": EStat.SPHERE,
+        "value": 0
+      },
+
+      {
+        "label": 'Forces',
+        "type": EStat.SPHERE,
+        "value": 0
+      }
+    ],
+    [
+      {
+        "label": 'Life',
+        "type": EStat.SPHERE,
+        "value": 0
+      },
+      {
+        "label": 'Matter',
+        "type": EStat.SPHERE,
+        "value": 0
+      },
+      {
+        "label": 'Mind',
+        "type": EStat.SPHERE,
+        "value": 0
+      }
+    ],
+    [
+      {
+        "label": 'Prime',
+        "type": EStat.SPHERE,
+        "value": 0
+      },
+      {
+        "label": 'Spirit',
+        "type": EStat.SPHERE,
+        "value": 0
+      },
+      {
+        "label": 'Time',
+        "type": EStat.SPHERE,
+        "value": 0
+      }
+    ]
+  ],
 }
