@@ -3,9 +3,6 @@
   fxLayout="row"
   fxLayoutAlign="start center"
 >
-  <ng-container *ngIf="!isAttr">
-    <button (click)="selectStar(0)">X</button>
-  </ng-container>
   <div
     *ngFor="let star of stars"
     [ngClass]="[star.class]"

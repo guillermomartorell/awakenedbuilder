@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-// import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import * as solid from '@fortawesome/free-solid-svg-icons';
 import * as regular from '@fortawesome/free-regular-svg-icons';
+import { EStat } from '../interfaces/stat';
 
 @Component({
     selector: 'app-star-rating',
@@ -12,9 +12,8 @@ import * as regular from '@fortawesome/free-regular-svg-icons';
 export class StarRatingComponent implements OnInit {
   solidCircleIcon: any = solid.faCircle;
   regCircleIcon: any = regular.faCircle;
-  selectedRating = 0;
   @Output() rated: EventEmitter<any> = new EventEmitter<any>();
-  @Input() type: any;
+  @Input() type: EStat = EStat.ATTRIBUTE;;
   @Input() value: any;
   stars: any;
   isAttr: boolean = false;
@@ -25,7 +24,7 @@ export class StarRatingComponent implements OnInit {
       {
         id: 1,
         icon: this.isAttr ? this.solidCircleIcon : this.regCircleIcon,
-        class: 'star-gray star-hover star',
+        class: 'star-gold star',
         value: 1,
       },
       {
@@ -69,11 +68,8 @@ export class StarRatingComponent implements OnInit {
   }
 
   selectStar(received: any): void {
-    // prevent multiple selection
-    // if (this.selectedRating === 0) {
-    let value = received === 0 ? this.rated.emit(received) : received;
-    // this.rated.emit(value);
-
+    let value = !this.isAttr && received === 1 && this.value === 1 ? 0 : received;
+ 
     this.stars.filter((star: any) => {
       if (star.id <= value) {
         star.class = 'star-gold star';
@@ -85,9 +81,6 @@ export class StarRatingComponent implements OnInit {
 
       return star;
     });
-    // }
-    // console.log(value)
-    this.selectedRating = value;
     this.rated.emit(value);
   }
 }
