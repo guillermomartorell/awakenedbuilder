@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CustomSnackComponent } from './components/custom-snack/custom-snack.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SectionComponent,
+    CustomSnackComponent,
     StarRatingComponent
   ],
   imports: [

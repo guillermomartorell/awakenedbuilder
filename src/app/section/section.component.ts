@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
-import { ISave, ISavedStat, save } from 'src/app/models/save';
+import { ISavedStat, save } from 'src/app/models/save';
 import { EStat, IStat } from '../interfaces/stat';
+import { CustomSnackComponent } from '../components/custom-snack/custom-snack.component';
 
 @Component({
     selector: 'app-section',
@@ -34,10 +35,10 @@ import { EStat, IStat } from '../interfaces/stat';
 export class SectionComponent implements OnInit {
   @Input() type: EStat = EStat.ATTRIBUTE;
   @Input() desc: IStat[][] = [];
-  currentData: any = [];
+  currentData: IStat[][] = [];
   attrSum: any = {};
   attrObj: any[] = [];
-  description: string = 'Description: []';
+  description: string[] = ['Description: []'];
   config: MatSnackBarConfig = {
     duration: 0,
   };
@@ -55,13 +56,10 @@ export class SectionComponent implements OnInit {
       const savedData: ISavedStat[][] = parseData[this.type];
       this.setCurrentSum(savedData)
       this.save.set(parseData)
-    } else {
-      this.currentData = this.save();
     }
   }
   setCurrentSum(savedData: ISavedStat[][]) {
     savedData.forEach((statList: ISavedStat[]) => {
-      this.currentData.push(statList);
       const sum = statList.map(el => el.value).reduce((prev, curr) => {
         const currentVal = this.type === EStat.ATTRIBUTE && curr > 0 ? curr -1 : curr
         return prev += currentVal
@@ -71,7 +69,7 @@ export class SectionComponent implements OnInit {
   }
 
   handleRated(value: number, type: string, label: string) {
-    if (value > 0) {
+
       const insert: any = { label, value, type };
       const index = this.attrObj.findIndex((el) => el.label === label);
 
@@ -89,27 +87,29 @@ export class SectionComponent implements OnInit {
 
       this.desc.forEach((element: IStat[]) => {
         element.forEach((attribute: IStat) => {
-          if (attribute.label === label) {
-            this.description = `${label}: ${attribute.val[value - 1]}`;
+          if (attribute.label === label && value) {
+            this.description = [
+            `${label}: ${attribute.val[value - 1]}`,
+            `${attribute.possessed ? 'Possesed by: ' + attribute.possessed : ''}`,
+            `${attribute.specialty ? 'Specialties:' + attribute.specialty: ''}`
+            ];
           }
         });
       });
-
-      this._snackBar.open(this.description, 'Dismiss', this.config);
+      if(value){
+        this._snackBar.openFromComponent(CustomSnackComponent, {
+          data: this.description
+        });
+      }
       this.save()[this.type].forEach((element: any) => {
         element.forEach((el: any) => {
           if (el.label === label) {
-            el.value = value;
+            el.value != value ? el.value = value : el.value = 0;
           }
         });
       });
       this.setCurrentSum(this.save()[this.type])
 
       localStorage.setItem('myData', JSON.stringify(this.save()));
-    } else {
-      this.setCurrentSum(this.save()[this.type])
-
-      localStorage.setItem('myData', JSON.stringify(this.save));
-    }
   }
 }
