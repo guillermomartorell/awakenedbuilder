@@ -8,16 +8,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CustomSnackComponent } from './components/custom-snack/custom-snack.component';
+import { FooterComponent } from './components/footer/footer.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
 import { CounterStateService } from './services/counter-state.service';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { FooterStateService } from './services/footer-state.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SectionComponent,
-    CustomSnackComponent,
+    FooterComponent,
     StarRatingComponent,
   ],
   imports: [
@@ -26,10 +29,12 @@ import { CounterStateService } from './services/counter-state.service';
     FontAwesomeModule,
     MatRadioModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [
     provideAnimationsAsync(),
+    FooterStateService,
     CounterStateService
   ],
   bootstrap: [AppComponent]

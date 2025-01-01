@@ -4,7 +4,13 @@ export interface IStat {
     val: string[];
     description?: string;
     possessed?: string;
-    specialty?: string
+    specialty?: string;
+    explaination?: string[];
+  }
+
+  export interface IStatDesc {
+    statNum?: number;
+    stat?: IStat
   }
 
   export enum EStat {

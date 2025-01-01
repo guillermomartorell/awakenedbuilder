@@ -2,9 +2,9 @@ import { Component, Input, OnInit, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { ISave, ISavedStat, save } from 'src/app/models/save';
-import { EStat, isGroupedCounter, IStat } from '../interfaces/stat';
-import { CustomSnackComponent } from '../components/custom-snack/custom-snack.component';
+import { EStat, isGroupedCounter, IStat, IStatDesc } from '../interfaces/stat';
 import { CounterStateService } from '../services/counter-state.service';
+import { FooterStateService } from '../services/footer-state.service';
 
 @Component({
     selector: 'app-section',
@@ -43,13 +43,13 @@ export class SectionComponent implements OnInit {
   currentData: IStat[][] = [];
   attrSum: Record<string, number> = {};
   attrObj: any[] = [];
-  description: string[] = ['Description: []'];
+  description: IStatDesc = {};
   config: MatSnackBarConfig = {
     duration: 0,
   };
   groupedCounter = signal(true)
 
-  constructor(private _snackBar: MatSnackBar, public countSv: CounterStateService) {}
+  constructor(public countSv: CounterStateService, private footerSvc: FooterStateService ) {}
 
   ngOnInit() {
     this.config = {
@@ -91,21 +91,20 @@ export class SectionComponent implements OnInit {
       }
 
       this.desc.forEach((element: IStat[]) => {
-        element.forEach((attribute: IStat) => {
-          if (attribute.label === label && value) {
-            this.description = [
-            `${label}: ${attribute.val[value - 1]}`,
-            `${attribute.possessed ? 'Possesed by: ' + attribute.possessed : ''}`,
-            `${attribute.specialty ? 'Specialties:' + attribute.specialty: ''}`
-            ];
+        element.forEach((stat: IStat) => {
+          if (stat.label === label && value) {
+            this.footerSvc.stat$.set({
+              statNum: value,
+              stat,
+            });
           }
         });
       });
-      if(value){
-        this._snackBar.openFromComponent(CustomSnackComponent, {
-          data: this.description
-        });
-      }
+      // if(value){
+      //   this._snackBar.openFromComponent(CustomSnackComponent, {
+      //     data: this.description
+      //   });
+      // }
       const newState = this.countSv.save$()
       newState[this.type].forEach((element: ISavedStat[]) => {
         element.forEach((el: ISavedStat) => {
