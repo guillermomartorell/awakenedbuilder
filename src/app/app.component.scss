@@ -57,8 +57,6 @@ h1 {
   font-family: "Aladin", cursive;
   font-size: 3rem;
   line-height: 4rem;
-  background: linear-gradient(to right, #b8860b, #c99b0e, #d6ae11, #e1bf14, #ecce17);
-  -webkit-text-fill-color: transparent;
 
   img{
     max-height: 150px;
@@ -118,4 +116,21 @@ h1 {
       }
     }
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(202, 202, 202, 0.612);
+  border-radius: 10px;
 }

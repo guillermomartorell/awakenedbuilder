@@ -10,20 +10,12 @@ import { FooterStateService } from "src/app/services/footer-state.service";
         <ng-container *ngIf="this.footerState.stat$()?.stat as stat">
           <mat-accordion>
               <mat-expansion-panel [expanded]="panelOpenState()" (closed)="panelOpenState.set(false)">
-                <!-- <mat-expansion-panel-header> -->
-                <!-- <mat-panel-title> {{stat.label}} </mat-panel-title> -->
-                <!-- <mat-panel-description> -->
-                  <!-- <ng-container *ngIf="this.footerState.stat$()?.statNum as statNum"> -->
-                    <!-- {{stat.type === EStat.SPHERE ?  'Level: ' + statNum : stat.val[statNum - 1]}} -->
-                  <!-- </ng-container> -->
-                <!-- </mat-panel-description> -->
-                <!-- </mat-expansion-panel-header> -->
                 <div style="max-width: 500px;" *ngIf="this.footerState.stat$()?.statNum as statNum">
-                  <p>{{stat.label}}</p>
-                  <p>{{stat.val[statNum - 1]}}</p>
-                  <p>{{stat.description}}</p>
+                  <p *ngIf="stat.label" [innerHTML]="stat.label"></p>
+                  <p *ngIf="stat.val[statNum - 1]" [innerHTML]="stat.val[statNum - 1]"></p>
                   <p *ngIf="stat.possessed">Possesed by: {{stat.possessed}}</p>
                   <p *ngIf="stat.specialty">Specialties: {{stat.specialty}}</p>
+                  <p *ngIf="stat.description" [innerHTML]="stat.description"></p>
                   <p *ngIf="stat.explaination" [innerHTML]="stat.explaination[statNum - 1]"></p>
                 </div>
               </mat-expansion-panel>
