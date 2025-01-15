@@ -1,0 +1,5 @@
+<div class="wrapper">
+  <ng-container  *ngFor="let info of stateSvc.save$().sheet_info">
+    <app-sheet-field class="info-field" [info]="info" (outputField)="handleOUtput($event)"></app-sheet-field>
+  </ng-container>
+</div>

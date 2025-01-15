@@ -6,6 +6,9 @@ import { ECounter } from './interfaces/enums';
 import { spheres } from './models/spheres';
 import { CounterStateService } from './services/counter-state.service';
 import { FooterStateService } from './services/footer-state.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import { map, startWith } from 'rxjs/operators';
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',

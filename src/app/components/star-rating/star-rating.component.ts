@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as solid from '@fortawesome/free-solid-svg-icons';
 import * as regular from '@fortawesome/free-regular-svg-icons';
-import { EStat } from '../interfaces/stat';
+import { EStat } from '../../interfaces/stat';
 
 @Component({
     selector: 'app-star-rating',

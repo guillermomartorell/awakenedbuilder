@@ -1,14 +1,29 @@
 import { EStat } from "../interfaces/stat";
 
 export interface ISave {
+  sheet_info: ISavedSheetInfo[];
   attributes: ISavedStat[][];
   skills: ISavedStat[][];
   spheres: ISavedStat[][]; 
 }
 
 export interface ISavedStat {label: string, type: string, value: number}
+export interface ISavedSheetInfo {key: ESheetInfo, value: string, label: string}
+export enum ESheetInfo { NAME = 'name', PLAYER = 'player', 
+CHRONICLES = 'chronicles', NATURE = 'nature', DEMEANOR= 'demeanor', ESSENCE = 'essence', AFFILIATION = 'affiliation', SECT = 'sect', CONCEPT= 'concept' }
 
 export const save: ISave = {
+  "sheet_info": [
+    {key: ESheetInfo.NAME, value: '' , label: 'Name' },
+    {key: ESheetInfo.PLAYER, value: '', label: 'Player' },
+    {key: ESheetInfo.CHRONICLES, value: '', label: 'Chronicles' },
+    {key: ESheetInfo.NATURE, value: '', label: 'Nature' },
+    {key: ESheetInfo.DEMEANOR, value: '', label: 'Demeanor' },
+    {key: ESheetInfo.ESSENCE, value: '', label: 'Essence' },
+    {key: ESheetInfo.AFFILIATION, value: '', label: 'Affiliation' },
+    {key: ESheetInfo.SECT, value: '', label: 'Sect' },
+    {key: ESheetInfo.CONCEPT, value: '', label: 'Concept' }
+  ],
   "attributes": [
     [
       {

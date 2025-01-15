@@ -2,9 +2,9 @@ import { Component, Input, OnInit, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { ISave, ISavedStat, save } from 'src/app/models/save';
-import { EStat, isGroupedCounter, IStat, IStatDesc } from '../interfaces/stat';
-import { CounterStateService } from '../services/counter-state.service';
-import { FooterStateService } from '../services/footer-state.service';
+import { EStat, isGroupedCounter, IStat, IStatDesc } from '../../interfaces/stat';
+import { CounterStateService } from '../../services/counter-state.service';
+import { FooterStateService } from '../../services/footer-state.service';
 
 @Component({
     selector: 'app-section',

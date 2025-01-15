@@ -1,0 +1,50 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .info-field{
+        width: 25%;
+        min-width: 255px;
+        position: relative;
+        margin: 5px 0;
+        display: flex;
+        align-items: flex-end;
+
+        strong {
+          display: block;
+          z-index: 1;
+          font-family: 'Philosopher', sans-serif;
+        }
+        
+        input{
+            border: none;
+            flex-grow: 1;
+
+            &:focus-visible{
+                outline: none;
+            }
+        }      
+    }
+}  
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper{
+  display: none !important;
+}
+::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .mdc-notched-outline__leading{
+  border-bottom: none !important;
+}
+
+::ng-deep .mat-mdc-notch-piece{
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+::ng-deep .mat-mdc-form-field-infix{
+  min-height: min-content !important;
+}

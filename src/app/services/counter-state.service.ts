@@ -6,8 +6,6 @@ import { ISave, save } from "../models/save";
     providedIn: 'root'
 })
 export class CounterStateService {
-    // counterState$ = computed(()=> {
-    // })
 
     creationCounterState$: WritableSignal<Record<EStat, number>> = signal({
         [EStat.ATTRIBUTE] : 0,

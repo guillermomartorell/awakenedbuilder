@@ -1,0 +1,16 @@
+@if (info) {
+<strong>{{info.label}}: </strong>
+  <mat-form-field hideRequiredMarker [appearance]="'outline'">
+  <input type="text"
+          matInput #input
+          [formControl]="myControl"
+          [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+      @for (option of filteredOptions | async; track option) {
+          @if(info.key === ESheetInfo.DEMEANOR  || info.key === ESheetInfo.NATURE ){
+              <mat-option [value]="option">{{option}}</mat-option>
+          }
+      }
+  </mat-autocomplete>
+  </mat-form-field>
+}
