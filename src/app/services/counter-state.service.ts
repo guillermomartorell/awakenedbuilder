@@ -7,11 +7,14 @@ import { ISave, save } from "../models/save";
 })
 export class CounterStateService {
 
-    creationCounterState$: WritableSignal<Record<EStat, number>> = signal({
+    creationCounterState$ = signal<Record<EStat, number>>({
         [EStat.ATTRIBUTE] : 0,
         [EStat.SKILL] : 0,
         [EStat.SPHERE] : 0,
     })
+
+    freebieCounterState$ = signal<Record<EStat, number> | null>(null)
+    experienceCounterState$ = signal<Record<EStat, number> | null>(null)
 
     save$ = signal(save)
 
